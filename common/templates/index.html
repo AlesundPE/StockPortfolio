@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    </head>
+    <body>
+        <select id="pairs">
+            <option value="AAPL">AAPL</option>
+            <option value="ETHUSDT">ETHUSDT</option>
+        </select>
+        <br/>
+
+        <div class="tradingview-widget-container" id="tvchart"></div>
+
+    </body>
+    <script>
+    loadCharts()
+        function loadCharts(){
+            new TradingView.widget(
+            {
+            "width": 980,
+            "height": 610,
+            "symbol": "NASDAQ:AAPL",
+            "interval": "D",
+            "timezone": "Etc/UTC",
+            "theme": "Dark",
+            "style": "1",
+            "locale": "in",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "allow_symbol_change": true,
+            "container_id": "tvchart"
+            }
+            );
+        }
+    </script>
+</html>
+
+<!--
+    
+    <div class="tradingview-widget-container">
+    <div id="tradingview_1e814"></div>
+    <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    <script type="text/javascript">
+    new TradingView.widget(
+    {
+    "width": 980,
+    "height": 610,
+    "symbol": "NASDAQ:AAPL",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "light",
+    "style": "1",
+    "locale": "in",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "allow_symbol_change": true,
+    "container_id": "tradingview_1e814"
+    }
+    );
+    </script>
+  </div>
+  
+-->

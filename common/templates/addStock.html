@@ -15,25 +15,32 @@
   <thead class="table-dark">
     <tr>
       <th scope="col">Symbol</th>
-      <th scope="col">Latest Price </th>
+      <th scope="col">Open Price </th>
       <th scope="col">Close Price </th>
       <th scope="col">Market Cap </th>
       <th scope="col">YTD Change </th>
       <th scope="col">52 Weeks High </th>
       <th scope="col">52 Weeks Low </th>
+      <th scope="col">Delete </th>
+      <th scope="col">Predict </th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      {% for list_item in tickerList %}
+      {% for item in ticker %}
       <tr></tr>
-        <th scope="row"><a href="">{{ list_item.symbol }}</a></th>
-        <td>{{list_item.latestPrice}}</td>
-        <td>{{list_item.previousClose}}</td>
-        <td>{{list_item.marketCap}}</td>
-        <td>{{list_item.ytdChange}}</td>
-        <td>{{list_item.week52High}}</td>
-        <td>{{list_item.week52Low}}</td>
+        <script>
+          var symbolTemp=list_item.symbol
+        </script>
+        <th scope="row"><a href="index?symbol={{item.tickerSymbol}}">{{ item.tickerSymbol }}</a></th>
+        <td>{{item.latestPrice}}</td>
+        <td>{{item.previousClose}}</td>
+        <td>{{item.marketCap}}</td>
+        <td>{{item.ytdChange}}</td>
+        <td>{{item.week52High}}</td>
+        <td>{{item.week52Low}}</td>
+        <td><a href="{% url 'delete' item.id %}"> Delete</a> </td>
+        <td><a href="{% url 'prediction' item.tickerSymbol %}"> Predict</a> </td>
     </tr>
       {% endfor %}
   </tbody>

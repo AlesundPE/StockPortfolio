@@ -23,13 +23,10 @@
                 <a class="nav-link" href="{% url 'about' %}">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'customer' %}">Customer</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{% url 'addStock' %}">Stocks</a>
               </li>
             </ul>
-            <form action="{% url 'home' %}" class="d-flex" method="POST">
+            <form action="{% url 'index' %}" class="d-flex" method="POST">
                 {% csrf_token %}
               <input class="form-control me-2" type="search" placeholder="Type in the stock symbol" aria-label="Search" name="tickerSymbol">
               <button class="btn btn-outline-success" type="submit">Search Stock</button>
@@ -37,7 +34,7 @@
           </div>
         </div>
       </nav>
-    <div class = "container">
+  <div class = "container">
         <br/>
 
         {% if messages %}
@@ -50,9 +47,9 @@
         {% endif %}
         
 
-        {% block content %}
-        {% endblock %}
-    </div>
+  {% block content %}
+  {% endblock %}
+  </div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

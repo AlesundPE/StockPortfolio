@@ -1,38 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
 <html>
-    <head>
-        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    </head>
-    <body>
-        <select id="pairs">
-            <option value="AAPL">AAPL</option>
-            <option value="ETHUSDT">ETHUSDT</option>
-        </select>
-        <br/>
+<head>
+    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+<br>
 
-        <div class="tradingview-widget-container" id="tvchart"></div>
+<div class="tradingview-widget-container" id="tvchart"></div>
 
-    </body>
-    <script>
-    loadCharts()
-        function loadCharts(){
-            new TradingView.widget(
-            {
-            "width": 980,
-            "height": 610,
-            "symbol": "NASDAQ:AAPL",
-            "interval": "D",
-            "timezone": "Etc/UTC",
-            "theme": "Dark",
-            "style": "1",
-            "locale": "in",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "allow_symbol_change": true,
-            "container_id": "tvchart"
-            }
-            );
-        }
-    </script>
+</body>
+<script>
+loadCharts()
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+function loadCharts(){
+    new TradingView.widget(
+    {
+    "width": 1600,
+    "height": 900,
+    "symbol": "{{tickerSymbol}}",
+    "interval": "D",
+    "timezone": "Etc/UTC",
+    "theme": "Dark",
+    "style": "1",
+    "locale": "en",
+    "toolbar_bg": "#f1f3f6",
+    "enable_publishing": false,
+    "withdateranges": true,
+    "allow_symbol_change": true,
+    "details": true,
+    "container_id": "tvChart"
+    }
+    );
+}
+</script>
 </html>
 
 <!--
@@ -62,3 +72,5 @@
   </div>
   
 -->
+
+{% endblock %}
